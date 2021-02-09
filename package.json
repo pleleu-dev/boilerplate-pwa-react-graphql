@@ -1,0 +1,113 @@
+{
+	"name": "pwa-react-graphql",
+	"version": "0.0.1",
+	"description": "PWA-React-GraphQL",
+	"main": "index.js",
+	"engines": {
+		"node": "12.15.0",
+		"npm": " 6.13.4"
+	},
+	"scripts": {
+		"watch:client": "webpack --config ./config/webpack/index.js --env clientDev --watch",
+		"watch:server": "webpack --config ./config/webpack/index.js --env serverDev --watch",
+		"dev:client": "webpack --config ./config/webpack/index.js --env clientDev",
+		"dev:server": "webpack --config ./config/webpack/index.js --env serverDev",
+		"dev:start": "nodemon --exec node ./build/index.js",
+		"dev": "npm-run-all dev:*",
+		"prod:client": "./node_modules/.bin/webpack --config ./config/webpack/index.js --env clientProd",
+		"prod:server": "./node_modules/.bin/webpack --config ./config/webpack/index.js --env serverProd",
+		"prod": "npm-run-all prod:*",
+		"heroku-postbuild": "npm-run-all prod:*",
+		"start": "NODE_ENV=production node ./dist/index.js"
+	},
+	"author": "P.Leleu",
+	"license": "ISC",
+	"dependencies": {
+		"@apollo/client": "^3.0.0-beta.31",
+		"@apollo/react-ssr": "^4.0.0-beta.1",
+		"@loadable/component": "^5.12.0",
+		"@loadable/server": "^5.12.0",
+		"apollo-client": "^2.6.8",
+		"axios": "^0.19.2",
+		"compression": "^1.7.4",
+		"ejs": "^3.0.1",
+		"express": "^4.17.1",
+		"express-graphql": "^0.9.0",
+		"graphql": "^14.6.0",
+		"node-fetch": "^2.6.0",
+		"npm-run-all": "^4.1.5",
+		"react": "^16.12.0",
+		"react-apollo": "^3.1.3",
+		"react-dom": "^16.12.0",
+		"react-helmet": "^5.2.1",
+		"react-router-dom": "^5.1.2",
+		"regenerator-runtime": "^0.13.3",
+		"styled-components": "^5.0.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.8.3",
+		"@babel/plugin-proposal-class-properties": "^7.8.3",
+		"@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+		"@babel/preset-env": "^7.8.3",
+		"@babel/preset-react": "^7.8.3",
+		"@babel/preset-typescript": "^7.8.3",
+		"@loadable/babel-plugin": "^5.12.0",
+		"@loadable/webpack-plugin": "^5.12.0",
+		"@types/compression": "^1.7.0",
+		"@types/cors": "^2.8.6",
+		"@types/express": "^4.17.2",
+		"@types/loadable__component": "^5.10.0",
+		"@types/loadable__server": "^5.9.1",
+		"@types/node-fetch": "^2.5.4",
+		"@types/react": "^16.9.19",
+		"@types/react-dom": "^16.9.5",
+		"@types/react-helmet": "^5.0.15",
+		"@types/react-router-dom": "^5.1.3",
+		"@types/styled-components": "^4.4.2",
+		"babel-loader": "^8.0.6",
+		"babel-plugin-styled-components": "^1.10.7",
+		"babel-polyfill": "^6.26.0",
+		"clean-webpack-plugin": "^3.0.0",
+		"copy-webpack-plugin": "^5.1.1",
+		"file-loader": "^5.0.2",
+		"html-webpack-plugin": "^3.2.0",
+		"nodemon": "^2.0.2",
+		"tslint": "^6.0.0",
+		"tslint-config-prettier": "^1.18.0",
+		"tslint-plugin-prettier": "^2.1.0",
+		"typescript": "^3.7.5",
+		"uglifyjs-webpack-plugin": "^2.2.0",
+		"url-loader": "^3.0.0",
+		"webpack": "^4.41.5",
+		"webpack-bundle-analyzer": "^3.6.0",
+		"webpack-cli": "^3.3.10",
+		"webpack-merge": "^4.2.2",
+		"webpack-node-externals": "^1.7.2",
+		"workbox-webpack-plugin": "^5.0.0"
+	},
+	"babel": {
+		"sourceType": "unambiguous",
+		"presets": [
+			"@babel/preset-typescript",
+			"@babel/preset-env",
+			"@babel/preset-react"
+		],
+		"plugins": [
+			"@babel/proposal-class-properties",
+			"@babel/plugin-proposal-object-rest-spread",
+			"@loadable/babel-plugin",
+			[
+				"styled-components",
+				{
+					"ssr": true,
+					"displayName": true,
+					"preprocess": false
+				}
+			]
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pleleu-dev/PWA-React-GraphQL.git"
+	}
+}
